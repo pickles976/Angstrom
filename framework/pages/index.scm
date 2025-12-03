@@ -43,5 +43,5 @@ Huh, I guess it does."
       
       (style '(bg "373"))
       ;; label, link, page name, fields
-      (submit-field "Submit" "/app/handle_comment.mu" "index" "user_name" "user_lxmf" "comment_text")
+      (submit-field "Submit" "/app/handle_comment.scm" "index" "user_name" "user_lxmf" "comment_text")
       (reset-style))

@@ -13,6 +13,7 @@
     - [ ] user interaction
         - [x] load comments from file
         - [ ] write comments to file
+            - [ ] test in-situ
         - [ ] hooray! feature-parity achieved!
 
 - [ ] create an "actions" file which can do multiple things
