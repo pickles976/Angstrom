@@ -3,14 +3,17 @@
 ### TODO
 - [x] get a basic page with comments working
 - [ ] recreate it in chicken scheme
-    - [x] links
-    - [x] fields
-    - [x] submit buttons
-    - [x] improved text styling (check deepseek's suggestions)
-    - [ ] style should not take any arguments
-    - [ ] load comments from file
-    - [ ] write comments to file
-    - [ ] hooray! feature-parity achieved!
+    - [ ] simple DSL
+        - [x] links
+        - [x] fields
+        - [x] submit buttons
+        - [x] improved text styling (check deepseek's suggestions)
+        - [x] style should not take any arguments
+        - [ ] consolidate my DSL implementation with the one Deepseek provided
+    - [ ] user interaction
+        - [ ] load comments from file
+        - [ ] write comments to file
+        - [ ] hooray! feature-parity achieved!
 
 - [ ] create an "actions" file which can do multiple things
 - [ ] switch from file-based comments, to sqlite-based comment system
