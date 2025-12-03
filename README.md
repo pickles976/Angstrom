@@ -9,7 +9,7 @@
         - [x] submit buttons
         - [x] improved text styling (check deepseek's suggestions)
         - [x] style should not take any arguments
-        - [ ] consolidate my DSL implementation with the one Deepseek provided
+        - [x] consolidate my DSL implementation with the one Deepseek provided
     - [ ] user interaction
         - [ ] load comments from file
         - [ ] write comments to file
