@@ -23,7 +23,10 @@ sqlite3 app.db "SELECT * FROM post;"
 
 (load "orm-lib.scm")
 
-;; 1. Create instances
+;; Open database
+(db-open "app.db")
+
+;; CREATE: Make and save instances
 (define my-comment
   (make-comment
     '((name . "Alice")
@@ -31,14 +34,20 @@ sqlite3 app.db "SELECT * FROM post;"
       (page-name . "index")
       (timestamp . "2025-12-04 16:45")
       (text . "Hello world!"))))
-
-;; 2. Open database
-(db-open "app.db")
-
-;; 3. Save instances
 (db-save my-comment)
 
-;; 4. Close database
+;; READ: Query instances
+(define all-comments (db-list 'comment))
+(define index-comments (db-list 'comment '((page-name . "index"))))
+(define alice-index (db-list 'comment '((name . "Alice") (page-name . "index"))))
+
+;; Work with results (they're just alists!)
+(for-each
+  (lambda (c)
+    (print (alist-ref 'name c) ": " (alist-ref 'text c)))
+  index-comments)
+
+;; Close database
 (db-close)
 ```
 
@@ -97,9 +106,51 @@ csi -s orm.scm --generate
 (db-close)
 ```
 
+## API Reference
+
+### Creating Data
+
+```scheme
+(db-save (make-comment '((name . "Alice") (text . "Hello"))))
+```
+
+### Querying Data
+
+```scheme
+;; Get all records
+(db-list 'comment)
+
+;; Filter by one field
+(db-list 'comment '((page-name . "index")))
+
+;; Filter by multiple fields (AND)
+(db-list 'comment '((page-name . "index") (name . "Alice")))
+```
+
+### Working with Results
+
+Results are alists with a `__model__` key:
+
+```scheme
+(define comments (db-list 'comment '((page-name . "index"))))
+
+;; Access fields
+(alist-ref 'name (car comments))
+(alist-ref 'text (car comments))
+(alist-ref 'id (car comments))
+
+;; Map over results
+(map (lambda (c) (alist-ref 'text c)) comments)
+
+;; Filter results
+(filter (lambda (c) (> (alist-ref 'id c) 5)) comments)
+```
+
 ## Tips
 
 - Field names with hyphens (like `created-at`) are automatically converted to underscores (`created_at`) in SQL
-- The `id` field is always auto-generated, don't include it in your instances
+- The `id` field is always auto-generated, don't include it when creating instances
+- The `id` field IS included in query results
 - `db-save` returns the ID of the newly inserted row
+- `db-list` returns an empty list if no results match
 - Empty strings (`""`) are used for missing optional fields

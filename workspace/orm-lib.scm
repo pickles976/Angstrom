@@ -198,6 +198,81 @@
       (print "Saved with ID: " id)
       id)))
 
+;; ========== DATABASE QUERYING ==========
+
+(define (build-select-sql table-name filters)
+  "Build SELECT SQL with optional WHERE clause"
+  ;;;
+  ;;; filters: alist like '((page-name . "blog_post") (name . "Alice"))
+  ;;; Returns: "SELECT * FROM table WHERE field = ? AND field = ?"
+
+  (let ((base (conc "SELECT * FROM " table-name)))
+    (if (null? filters)
+        base
+        (let* ((where-parts
+                 (map (lambda (filter)
+                        (let ((field (string-translate
+                                       (symbol->string (car filter))
+                                       #\- #\_)))
+                          (conc field " = ?")))
+                      filters))
+               (where-clause (string-intersperse where-parts " AND ")))
+          (conc base " WHERE " where-clause)))))
+
+(define (model-all-field-names model)
+  "Get ALL field names from a model (including id)"
+  ;;;
+  ;;; Unlike model-field-names, this includes the id field
+  ;;; Returns: (id name address page-name timestamp text)
+
+  (let ((fields (alist-ref 'fields model)))
+    (map (lambda (field) (alist-ref 'name field)) fields)))
+
+(define (row->instance model-name field-names row)
+  "Convert a database row (list of values) to an instance alist"
+  ;;;
+  ;;; field-names: (id name address ...)
+  ;;; row: (1 "Alice" "" ...)
+  ;;; Returns: ((__model__ . comment) (id . 1) (name . "Alice") ...)
+
+  (cons `(__model__ . ,model-name)
+        (map cons field-names row)))
+
+(define (db-list model-name . rest)
+  "Query database and return list of instances"
+  ;;;
+  ;;; Usage:
+  ;;;   (db-list 'comment)                                ; All comments
+  ;;;   (db-list 'comment '((page-name . "blog_post")))  ; Filtered
+  ;;;
+  ;;; Returns list of instances (alists with __model__ key)
+
+  (unless (db-connection)
+    (error "No database connection. Call (db-open \"filename.db\") first"))
+
+  ;; Parse arguments - filters are optional
+  (let* ((filters (if (null? rest) '() (car rest)))
+         (model (find-model model-name all-models))
+         (table-name (symbol->string (alist-ref 'name model)))
+         (field-names (model-all-field-names model))
+
+         ;; Build SQL
+         (sql-str (build-select-sql table-name filters))
+         (stmt (sql (db-connection) sql-str))
+
+         ;; Extract filter values
+         (filter-values (map cdr filters))
+
+         ;; Execute query
+         (rows (if (null? filter-values)
+                   (query fetch-all stmt)
+                   (apply query fetch-all stmt filter-values))))
+
+    ;; Convert rows to instances
+    (map (lambda (row)
+           (row->instance model-name field-names row))
+         rows)))
+
 ;; ========== LIBRARY LOADED ==========
 
 ;; This library is meant to be loaded by other scripts

@@ -80,20 +80,26 @@ Add a scheme lsp extension to vscode. Open the command palette and type `ext ins
 
 ### TODO
 
+
+
 - [ ] see if claude can create a simple ORM
     - [x] models.scm file
     - [x] orm --generate (makes file and tables)
     - [x] insert command
-    - [ ] return a list (filter by specific keywords)
-    - [ ] specify foreign keys
-- [ ] load and convert markdown content
+    - [x] return a list (filter by specific keywords)
+- [ ] create documentation
+
+- [ ] implement the rest of micron-dsl
+- [ ] load and convert markdown content into 
+- [ ] separate all the examples out into "docs" or "examples"
 - [ ] compile the custom modules
 - [ ] usage
     - [ ] multiple pages generated with micron-dsl.scm 
         - [ ] index (link to repo)
         - [ ] blog post 0 (explain the basics of chicken scheme)
-        - [ ] blog post 1 (content separate from file, explain how the DSL works)
-        - [ ] blog post 2 (content separate from file, explain how the ORM works)
+        - [ ] blog post 1 (explain how the DSL works)
+        - [ ] blog post 2 (explain the markdown converter)
+        - [ ] blog post 3 (explain how the ORM works)
     - [ ] orm.scm
         - [ ] add comment sections to the bottom of each page
 - [ ] get it working in-situ

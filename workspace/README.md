@@ -246,9 +246,68 @@ No manual code needed - `make-user` automatically exists!
 (symbol->string 'user)        ; Creates string "user"
 ```
 
+## Update: SELECT Operations Complete! ✅
+
+We now have `db-list` for querying data with filters!
+
+### New Function: db-list
+
+```scheme
+;; Get all records
+(db-list 'comment)
+
+;; Filter by field
+(db-list 'comment '((page-name . "blog_post")))
+
+;; Multiple filters (AND)
+(db-list 'comment '((name . "Alice") (page-name . "index")))
+```
+
+### How It Works
+
+**SQL Generation:**
+1. Builds `SELECT * FROM table`
+2. Adds `WHERE field = ? AND field = ?` if filters provided
+3. Uses parameterized queries (safe from SQL injection)
+
+**Row Conversion:**
+1. Fetches rows as lists: `(1 "Alice" "" "blog_post" ...)`
+2. Gets field names from model: `(id name address page-name ...)`
+3. Zips them together: `((id . 1) (name . "Alice") ...)`
+4. Adds `__model__` key: `((__model__ . comment) (id . 1) ...)`
+
+**Example:**
+```scheme
+(db-list 'comment '((page-name . "welcome")))
+; Returns:
+; (((__model__ . comment) (id . 7) (name . "Bob") (text . "Great!"))
+;  ((__model__ . comment) (id . 8) (name . "Charlie") (text . "Thanks!")))
+```
+
+### New Scheme Concepts
+
+**Variadic Functions** - Functions accepting variable arguments:
+```scheme
+(define (db-list model-name . rest)
+  ;; rest captures extra arguments as a list
+  (let ((filters (if (null? rest) '() (car rest))))
+    ...))
+
+;; Can call with or without filters:
+(db-list 'comment)                     ; rest = '()
+(db-list 'comment '((name . "Alice"))) ; rest = '(((name . "Alice")))
+```
+
+**Map with Cons** - Building alists from parallel lists:
+```scheme
+(map cons '(a b c) '(1 2 3))
+; Returns: ((a . 1) (b . 2) (c . 3))
+```
+
 ## Next Steps
 
 1. ✅ ~~INSERT operations (create records)~~
 2. ✅ ~~Automatic constructor generation from models.scm~~
-3. SELECT operations (query records)
+3. ✅ ~~SELECT operations (query records)~~
 4. (Optional) A `define-model` macro for cleaner syntax
+5. (Optional) Helper functions like `db-find-by-id`
