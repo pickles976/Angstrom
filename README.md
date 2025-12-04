@@ -44,6 +44,10 @@ Or just copy the contents of `/framework/pages` to `~/.nomadnetwork/storage/page
 
 ### Tips
 
+```
+(db-list (comment 'page-index "blog_post")) ;; returns all comments for that page
+```
+
 #### Learning Scheme
 
 I chose Scheme for a few reasons.
