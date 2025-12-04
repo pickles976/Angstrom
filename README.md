@@ -76,33 +76,27 @@ Add a scheme lsp extension to vscode. Open the command palette and type `ext ins
 
 ### TODO
 - [x] get a decent dev environment going
-- [ ] switch from file-based comments, to sqlite-based comment system
+- [x] switch from file-based comments, to sqlite-based comment system
     - [x] create a simple sqlite database https://wiki.call-cc.org/eggref/5/sql-de-lite#preparing-a-sql-statement
     - [x] simple crud
     - [x] implement comments
-    - [ ] make custom objects for comments
+    - [x] make custom objects for comments
     https://chat.deepseek.com/share/yj1n7neekh70b9vpyc
-
-Or check out srfi-99 for records:
-```
-(use srfi-99) ; for records
-
-(define-record-type <user>
-  (make-user id name email)
-  user?
-  (id user-id)
-  (name user-name)
-  (email user-email))
-```
-
-https://www.reddit.com/r/scheme/comments/10p3r9t/how_to_type_annotate_in_chickenscheme/
-
-
-    - [ ] remove boilerplate?
-    - [ ] add typing https://wiki.call-cc.org/man/5/Types
-    
     - [ ] get it working in-situ
-- [ ] update my personal node with this
+
+- [ ] get lsp working
+- [ ] see if claude can create a simple ORM
+    - [ ] models.scm file
+    - [ ] orm --generate (makes file and tables)
+    - [ ] insert command
+    - [ ] return a list (filter by specific keywords)
+    - [ ] specify foreign keys
+
+- [ ] compile the custom modules
+- [ ] add instructions for users to build and use the custom modules
+- [ ] add some tutorials
+
+https://wiki.call-cc.org/chicken-for-python-programmers
 
 - [ ] integrate recipe search
     - [ ] run hari.recipes locally
@@ -111,9 +105,4 @@ https://www.reddit.com/r/scheme/comments/10p3r9t/how_to_type_annotate_in_chicken
     - [ ] click on list entry and load HTML
     - [ ] convert HTML to micron
 - [ ] create epub search
-
-- [ ] compile the custom modules
-- [ ] add instructions for users to build and use the custom modules
-- [ ] add some tutorials
-
-https://wiki.call-cc.org/chicken-for-python-programmers
+- [ ] update with learning
