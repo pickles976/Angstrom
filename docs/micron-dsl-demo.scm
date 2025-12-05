@@ -2,7 +2,7 @@
 
 ;;; micron-dsl-demo.scm - Demonstration of all micron-dsl features
 
-(load "src/micron-dsl.scm")
+(load "framework/micron.scm")
 
 (print "╔════════════════════════════════════════╗")
 (print "║   Micron DSL - Complete Demo          ║")

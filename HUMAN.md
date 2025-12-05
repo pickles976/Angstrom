@@ -73,7 +73,8 @@ Add a scheme lsp extension to vscode. Open the command palette and type `ext ins
 
 - [ ] usage
     - [ ] multiple pages generated with micron-dsl.scm 
-        - [ ] index (link to repo)
+        - [x] index (link to repo)
+        - [ ] test it
         - [ ] blog post 0 (explain the basics of chicken scheme)
         - [ ] blog post 1 (explain how the DSL works)
         - [ ] blog post 2 (explain the markdown converter)
@@ -81,8 +82,13 @@ Add a scheme lsp extension to vscode. Open the command palette and type `ext ins
     - [ ] orm.scm
         - [ ] add comment sections to the bottom of each page
 - [ ] get it working in-situ
+- [ ] make the database location configurable in settings
+- [ ] turn all the stuff in `framework` into modules so they dont need relative paths for exporting
+- [ ] deploy
 
-
+- [ ] update docs
+    - [ ] organize by location
+    - [ ] make sure that they all work
 
 DONE
 

@@ -2,7 +2,7 @@
 
 ;;; test-markdown-converter.scm - Test the markdown to micron converter
 ;;;
-;;; Usage: csi -s docs/test-markdown-converter.scm
+;;; Usage: cd pages && csi -s ../docs/test-markdown-converter.scm
 
 (import scheme)
 (import (chicken base))
@@ -11,7 +11,7 @@
 (import (chicken file))
 
 ;; Load the markdown converter (which also loads micron-dsl)
-(load "src/markdown.scm")
+(load "framework/markdown.scm")
 
 ;; ========== TEST UTILITIES ==========
 
@@ -39,7 +39,7 @@
 
 (define (save-output name output)
   "Save converted output to a .mu file"
-  (let ((output-file (conc "docs/" name ".mu")))
+  (let ((output-file (conc "../docs/" name ".mu")))
     (call-with-output-file output-file
       (lambda (port)
         (display output port)))
@@ -81,11 +81,11 @@
   (test-inline)
 
   ;; Test simple example
-  (let ((output1 (test-conversion "Simple Example" "docs/example-simple.md")))
+  (let ((output1 (test-conversion "Simple Example" "../docs/example-simple.md")))
     (save-output "example-simple-converted" output1))
 
   ;; Test comprehensive example
-  (let ((output2 (test-conversion "Comprehensive Test" "docs/test-markdown.md")))
+  (let ((output2 (test-conversion "Comprehensive Test" "../docs/test-markdown.md")))
     (save-output "test-markdown-converted" output2))
 
   ;; Summary
@@ -93,7 +93,7 @@
   (print "✓ Inline formatting tests completed")
   (print "✓ Simple example converted")
   (print "✓ Comprehensive test converted")
-  (print "\nOutput files created in docs/ directory")
+  (print "\nOutput files created in ../docs/ directory")
   (print "View them in Nomadnet or inspect manually\n"))
 
 ;; Run tests
