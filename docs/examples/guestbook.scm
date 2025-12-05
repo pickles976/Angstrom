@@ -1,6 +1,6 @@
 #!/usr/bin/env -S csi -s
 
-;;; guestbook.scm - Simple guestbook using Macron
+;;; guestbook.scm - Simple guestbook using Angstrom
 ;;;
 ;;; A minimal but complete example showing:
 ;;; - Database queries

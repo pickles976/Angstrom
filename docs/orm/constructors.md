@@ -106,7 +106,7 @@ For `comment-model`, this becomes:
 
 ## The Learning Journey
 
-Macron uses eval-based generation because it's:
+Angstrom uses eval-based generation because it's:
 1. Easy to understand for beginners
 2. Shows how metaprogramming works
 3. Demonstrates quasiquote/eval patterns

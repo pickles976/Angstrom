@@ -3,6 +3,8 @@
 ;;; chicken-scheme-basics.mu - Introduction to Chicken Scheme
 
 (import micron)
+(load "~/.nomadnetwork/storage/pages/app/templates/comments.scm")
+(define page-name "chicken-scheme-basics")
 
 (print
   (style '(align center))
@@ -51,7 +53,7 @@
 
   (subsection "Association Lists (Alists)")
   nl
-  "Key-value pairs used throughout Macron:" nl nl
+  "Key-value pairs used throughout Angstrom:" nl nl
   (code "(define person '((name . \"Alice\") (age . 30)))") nl
   (code "(alist-ref 'name person)") "  ; Returns \"Alice\"" nl nl
 
@@ -80,4 +82,6 @@
   (reset-style) nl
   (style '(fg "5af"))
   (link "/page/index.mu" "Back to Home")
-  (reset-style))
+  (reset-style)
+
+  (display-comments app-db-path page-id))

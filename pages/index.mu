@@ -1,6 +1,6 @@
 #!/usr/bin/env -S csi -s
 
-;;; index.mu - Macron Framework Homepage
+;;; index.mu - Angstrom Framework Homepage
 
 (import micron)
 (import markdown)
@@ -24,9 +24,9 @@
 ;     (print "")))
 
 ;; Load settings (running from pages/, so app/ is relative)
-(load "app/settings.scm")
-(load "app/templates/header.scm")
-(load "app/templates/recent-comments.scm")
+(load "~/.nomadnetwork/storage/pages/app/settings.scm")
+(load "~/.nomadnetwork/storage/pages/app/templates/header.scm")
+(load "~/.nomadnetwork/storage/pages/app/templates/recent-comments.scm")
 
 ;; Configuration
 (define page-name "index")
@@ -37,14 +37,14 @@
 ;; Generate the page
 (print
 
-  (macron-header)
+  (Angstrom-header)
 
   ;; Welcome section
   (style '(align left))
   nl
 
   nl
-  (section "Welcome to Macron")
+  (section "Welcome to Angstrom")
   nl
 
     (style '(fg "ddd"))
@@ -54,17 +54,17 @@
     nl nl
 
     (style '(fg "5af"))
-    "https://github.com/pickles976/Macron"
+    "https://github.com/pickles976/Angstrom"
     (style '(fg "ddd"))
     nl nl
 
     "I found that there was not enough easy to use tooling around nomadnet"
     nl
-    "and micron, and I hope that macron helps bridge that gap."
+    "and micron, and I hope that Angstrom helps bridge that gap."
     nl nl
 
     (style '(fg "5af"))
-    (file-link "/file/macron.tar.gz" "Download macron.tar.gz")
+    (file-link "/file/Angstrom.tar.gz" "Download Angstrom.tar.gz")
     (style '(fg "ddd"))
     nl
 

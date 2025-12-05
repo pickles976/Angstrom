@@ -1,6 +1,6 @@
 ### Installation
 
-To get Macron running on your system:
+To get Angstrom running on your system:
 
 **Clone the repository**  
 
@@ -21,7 +21,7 @@ To get Macron running on your system:
    sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19
    ```
 
-**Build and install Macron modules**  
+**Build and install Angstrom modules**  
 
    ```bash
    cd pages/framework
@@ -63,7 +63,7 @@ To get Macron running on your system:
    csi -s framework/manage.scm --generate
    ```
 
-Your Macron site is now live on your Nomadnet node! Access it through the Nomadnet interface.
+Your Angstrom site is now live on your Nomadnet node! Access it through the Nomadnet interface.
 
 ---
 

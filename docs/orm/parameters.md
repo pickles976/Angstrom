@@ -20,7 +20,7 @@ A parameter is a special procedure that acts like a getter/setter:
 2. **Cleaner**: No `set!` mutation
 3. **Testable**: Easy to temporarily override in tests
 
-## Parameters in Macron
+## Parameters in Angstrom
 
 ### Database Path
 

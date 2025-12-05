@@ -1,5 +1,6 @@
 *.sqlite
 *.sqlite3
+*.db
 
 # Chicken Scheme build artifacts
 *.so

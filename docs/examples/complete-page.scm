@@ -1,6 +1,6 @@
 #!/usr/bin/env -S csi -s
 
-;;; complete-page.scm - Complete example using all Macron features
+;;; complete-page.scm - Complete example using all Angstrom features
 ;;;
 ;;; This demonstrates:
 ;;; - Micron DSL for layout
@@ -22,7 +22,7 @@
 (define (page-header)
   (conc
     (style '(align center))
-    (section "Macron Demo")
+    (section "Angstrom Demo")
     (style '(fg "888"))
     "A complete example page"
     (reset-style)
@@ -35,7 +35,7 @@
     (subsection "About This Page")
     nl
     (markdown->micron "
-This page demonstrates **all Macron features**:
+This page demonstrates **all Angstrom features**:
 
 - *Micron DSL* for styling and layout
 - *Markdown conversion* for content
@@ -115,7 +115,7 @@ Everything works together seamlessly!")
     (divider)
     nl
     (style '(fg "888" align center))
-    "Powered by Macron | "
+    "Powered by Angstrom | "
     (link "/page/index.mu" "Home")
     (reset-style)))
 

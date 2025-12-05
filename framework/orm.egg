@@ -1,0 +1,18 @@
+;;; orm.egg - Egg definition for ORM library
+
+((version "1.0.0")
+ (author "Angstrom Project")
+ (synopsis "Simple ORM for building Nomadnet applications with SQLite")
+ (license "MIT")
+
+ (components
+  (extension orm
+   (source "orm-lib.scm")
+   (types-file)
+   (component-dependencies)
+   (csc-options "-O3")))
+
+ (dependencies
+  srfi-1
+  srfi-13
+  sql-de-lite))

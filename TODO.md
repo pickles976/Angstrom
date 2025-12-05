@@ -1,8 +1,10 @@
 ### TODO
-- [ ] handle all relative paths with `~/.nomadnetwork/storage/...`
-- [ ] add comments to all pages
+- [x] handle all relative paths with `~/.nomadnetwork/storage/...`
+- [x] add comments to all pages
+
+- [ ] get it compiling again
 - [ ] fix markdown docs
-- [ ] improve styles
+- [ ] improve styles (purple)
 
 - [ ] link people on github
 - [ ] create tar.gz 

@@ -1,4 +1,4 @@
-# Macron
+# Angstrom
 
 Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DSL, and a markdown converter.
 
@@ -16,19 +16,12 @@ Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DS
    sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19
    ```
 
-3. **Build and install Macron modules**
+3. **Build and install Angstrom modules**
    ```bash
    cd ./framework
 
    # Build the modules
-   csc -s micron.scm
-   csc -s markdown.scm
-   csc -s orm-lib.scm
-
-   # Install system-wide (optional)
-   sudo chicken-install -s micron.egg
-   sudo chicken-install -s markdown.egg
-   sudo chicken-install -s orm.egg
+    sudo csc -s micron.scm -J && sudo chicken-install
    ```
 
    Then use them anywhere:
@@ -47,7 +40,9 @@ Run `chmod +x` on any pages or sub-pages that will be run as scripts.
 
 Generate the sqlite file from your `models.scm` file:
 ```bash
-csi -s framework/orm.scm --generate <path-to-models-file>
+csi -s framework/manage.scm --generate \
+    --db-path /absolute/path/to/app.db \
+    --models-path /absolute/path/to/models.scm
 csi -s pages/index.mu
 ```
 

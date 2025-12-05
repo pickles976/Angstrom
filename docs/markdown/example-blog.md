@@ -1,12 +1,12 @@
-# Building Nomadnet Pages with Macron
+# Building Nomadnet Pages with Angstrom
 
 *December 4, 2025*
 
-I've been experimenting with **Macron**, a framework for building interactive Nomadnet pages using Chicken Scheme. Here's what I've learned.
+I've been experimenting with **Angstrom**, a framework for building interactive Nomadnet pages using Chicken Scheme. Here's what I've learned.
 
-## Why Macron?
+## Why Angstrom?
 
-Nomadnet uses *Micron* markup for pages, which is great but can be verbose. Macron provides:
+Nomadnet uses *Micron* markup for pages, which is great but can be verbose. Angstrom provides:
 
 - **Scheme DSL** for generating micron
 - **Markdown converter** for content
@@ -23,11 +23,11 @@ Install Chicken Scheme and the required eggs:
 sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19
 ```
 
-Then clone Macron and build the modules:
+Then clone Angstrom and build the modules:
 
 ```
-git clone https://github.com/example/macron
-cd macron
+git clone https://github.com/example/Angstrom
+cd Angstrom
 csc -s framework/micron.scm
 ```
 
@@ -70,14 +70,14 @@ Example:
 This very blog post is written in Markdown! The page loads it with:
 
 ```scheme
-(markdown-file->micron "posts/macron-intro.md")
+(markdown-file->micron "posts/Angstrom-intro.md")
 ```
 
 Much easier than writing raw micron for content-heavy pages.
 
 ## What I've Built
 
-Using Macron, I've created:
+Using Angstrom, I've created:
 
 - A comment system for my blog
 - A contact form
@@ -95,7 +95,7 @@ I'm planning to:
 ---
 
 **Links**:
-- [Macron on GitHub](https://github.com/example/macron)
+- [Angstrom on GitHub](https://github.com/example/Angstrom)
 - [Nomadnet Homepage](https://unsigned.io/nomadnet/)
 - [My Nomadnet Node](lxmf@myaddress)
 

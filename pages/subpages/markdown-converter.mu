@@ -4,6 +4,8 @@
 
 (import micron)
 (import markdown)
+(load "~/.nomadnetwork/storage/pages/app/templates/comments.scm")
+(define page-name "markdown-converter")
 
 (print
   (style '(align center))
@@ -91,4 +93,5 @@ Check out `framework/markdown.scm` for the full implementation.
   nl nl
   (style '(fg "5af"))
   (link "/page/index.mu" "Back to Home")
-  (reset-style))
+  (reset-style)
+  (display-comments app-db-path page-id))

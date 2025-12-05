@@ -1,0 +1,17 @@
+;;; markdown.egg - Egg definition for Markdown to Micron converter
+
+((version "1.0.0")
+ (author "Angstrom Project")
+ (synopsis "Simple Markdown to Micron markup converter")
+ (license "MIT")
+
+ (components
+  (extension markdown
+   (types-file)
+   (component-dependencies)
+   (csc-options "-O3")))
+
+ (dependencies
+  srfi-1
+  srfi-13
+  micron))

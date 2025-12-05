@@ -106,7 +106,7 @@ nl                  ; Newline
   nl nl
 
   (style '(fg "ddd"))
-  "Welcome to " (bold "Macron") "!"
+  "Welcome to " (bold "Angstrom") "!"
   (reset-style)
   nl nl
 
