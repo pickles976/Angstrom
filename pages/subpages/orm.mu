@@ -3,7 +3,7 @@
 ;;; orm.mu - ORM Guide
 
 (import micron)
-(load "~/.nomadnetwork/storage/pages/app/templates/comments.scm)
+(load "/home/sebas/.nomadnetwork/storage/pages/app/templates/comments.scm)
 (define page-name "orm")
 
 (print

@@ -8,7 +8,7 @@
 (import orm)
 
 ;; Load settings (working directory is always pages/)
-(load "~/.nomadnetwork/storage/pages/app/settings.scm")
+(load "/home/sebas/.nomadnetwork/storage/pages/app/settings.scm")
 
 ;; Get form data from environment variables
 (define user-name (or (get-environment-variable "field_user_name") "Anonymous"))

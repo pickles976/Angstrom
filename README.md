@@ -6,8 +6,8 @@ Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DS
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/pickles976/Macro.git
-   cd Macro
+   git clone https://github.com/pickles976/Angstrom.git
+   cd Angstrom
    ```
 
 2. **Install Chicken Scheme and dependencies**
@@ -35,6 +35,8 @@ Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DS
 
 Copy the contents of `pages` to `~/.nomadnetwork/storage`
 Run `chmod +x` on any pages or sub-pages that will be run as scripts.
+Or just do:
+`chmod -R 755 ~/.nomadnetwork/storage/pages`
 
 ### If Using the ORM
 
