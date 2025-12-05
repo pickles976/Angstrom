@@ -3,7 +3,6 @@
 
 # Chicken Scheme build artifacts
 *.so
-*.egg
 *.o
 *.import.scm
 *.link

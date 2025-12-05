@@ -1,0 +1,16 @@
+;;; micron.egg - Egg definition for Micron DSL
+
+((version "1.0.1")
+ (author "Macron Project")
+ (synopsis "DSL for generating Nomadnet Micron markup")
+ (license "MIT")
+
+ (components
+  (extension micron
+   (types-file)
+   (component-dependencies)
+   (csc-options "-O3")))
+
+ (dependencies
+  srfi-1
+  srfi-13))

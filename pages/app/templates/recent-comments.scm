@@ -82,33 +82,3 @@
                      "-" nl)))
 
                rows)))))
-
-;; ========== TEACHING NOTES ==========
-;;;
-;;; Why use raw SQL instead of the ORM?
-;;;
-;;; 1. The ORM is limited to simple queries:
-;;;    - Only AND filters (no OR)
-;;;    - Only equality (no <, >, LIKE)
-;;;    - Single table only (no JOINs)
-;;;
-;;; 2. Raw SQL gives you full SQLite power:
-;;;    - ORDER BY, LIMIT, OFFSET
-;;;    - Aggregations (COUNT, SUM, AVG)
-;;;    - JOINs across tables
-;;;    - Complex WHERE clauses
-;;;
-;;; 3. Direct sql-de-lite API:
-;;;    - (open-database "path.db") - opens connection
-;;;    - (sql db "SELECT ...") - prepares statement
-;;;    - (query fetch-all stmt params...) - executes and fetches all rows
-;;;    - (close-database db) - closes connection
-;;;
-;;; 4. Results format:
-;;;    - ORM returns: alists like '((__model__ . comment) (name . "Alice") ...)
-;;;    - Raw SQL returns: lists like '((1 "Alice" "" "index" "2025-12-04" "Hi"))
-;;;    - Each row is a list matching your SELECT column order
-;;;
-;;; 5. When to use each:
-;;;    - Use ORM for: Simple CRUD, learning, consistency
-;;;    - Use raw SQL for: Complex queries, performance, advanced features

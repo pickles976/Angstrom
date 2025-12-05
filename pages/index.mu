@@ -54,7 +54,7 @@
     nl nl
 
     (style '(fg "5af"))
-    (link "https://github.com/pickles976/Macro" "View on GitHub")
+    "https://github.com/pickles976/Macron"
     (style '(fg "ddd"))
     nl nl
 
@@ -90,13 +90,13 @@
   nl
 
   
-  (bold (file-link "./subpages/chicken-scheme-basics.mu" "Learn the fundamentals of Scheme programming "))
+  (bold (file-link "/page/subpages/chicken-scheme-basics.mu" "Learn the fundamentals of Scheme programming "))
   nl
-  (bold (file-link "./subpages/micron-dsl.mu" "Generate micron with scheme "))
+  (bold (file-link "/page/subpages/micron-dsl.mu" "Generate micron with scheme "))
   nl
-  (bold (file-link "./subpages/markdown-converter.mu" "Write content efficiently with markdown "))
+  (bold (file-link "/page/subpages/markdown-converter.mu" "Write content efficiently with markdown "))
   nl
-  (bold (file-link "./subpages/orm.mu" "Build data-driven applications with our simple ORM "))
+  (bold (file-link "/page/subpages/orm.mu" "Build data-driven applications with our simple ORM "))
   nl
 
   ;; Recent Comments section (uses raw SQL - see template for learning example)
@@ -120,6 +120,5 @@
     (my-input-field  " Comment " "comment_text" 64) nl
 
     (style '(bg "373"))
-    ;; label, link, page name, fields
     (submit-field "Submit" "/app/actions/handle_comment.scm" page-name "user_name" "user_lxmf" "comment_text")
     (reset-style))

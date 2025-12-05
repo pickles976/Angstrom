@@ -43,6 +43,39 @@ workspace/
 
 ## Critical Path Knowledge
 
+### 0. IMPORTANT: Framework Module Imports
+
+**NEVER use relative imports for framework modules (`micron`, `markdown`, `orm`).**
+
+```scheme
+;; ✅ CORRECT - Always use import
+(import micron)
+(import markdown)
+(import orm)
+
+;; ❌ WRONG - Never load framework modules relatively
+(load "../framework/micron.scm")
+(load "../framework/markdown.scm")
+```
+
+**Why?**
+- Framework modules are compiled and installed system-wide
+- They export specific functions through module definitions
+- Relative loads bypass the module system and can cause issues
+
+**To update framework modules:**
+```bash
+cd framework
+sudo chicken-uninstall micron    # Remove old version
+sudo chicken-uninstall markdown
+sudo chicken-uninstall orm
+sudo csc -s micron.scm -J && sudo chicken-install
+sudo csc -s markdown.scm -J && sudo chicken-install
+sudo csc -s orm-lib.scm -J && sudo chicken-install
+```
+
+**User code in pages/app/** can use relative loads for local files, but framework modules must always be imported.
+
 ### 1. All Paths Are Relative to Workspace Root
 
 **Run everything from `/workspace/`**:
