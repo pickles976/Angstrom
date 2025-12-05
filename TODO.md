@@ -1,7 +1,7 @@
 ### TODO
 
 - [x] get sub-pages working
-- [ ] fix markdown doc rendering
+- [x] fix markdown doc rendering
 - [ ] improve styles (purple)
 
 - [ ] tell user to use absolute paths

@@ -68,35 +68,28 @@
     (style '(fg "ddd"))
     nl
 
-  ;; Docs section
-  nl
-  (subsection "Documentation")
-  nl
-
-    (style '(fg "ddd" align left))
-    nl
-    "The " (code "docs") " folder has scheme files that explain how things work."
-    nl
-
   ;; Installation instructions from markdown
   (style '(align left))
   nl
-  (md-file->micron "/home/sebas/.nomadnetwork/storage/pages/app/markdown/index.md")
+  (md-file->micron "./app/markdown/index.md")
   nl
 
   nl
   (section "Reference")
+  nl
   "Here is some documentation to get you started:"
   nl
 
-  
+  nl
+  (style '(fg "5af"))
   (bold (file-link "/page/subpages/chicken-scheme-basics.mu" "Learn the fundamentals of Scheme programming "))
-  nl
+  nl nl
   (bold (file-link "/page/subpages/micron-dsl.mu" "Generate micron with scheme "))
-  nl
+  nl nl
   (bold (file-link "/page/subpages/markdown-converter.mu" "Write content efficiently with markdown "))
-  nl
+  nl nl
   (bold (file-link "/page/subpages/orm.mu" "Build data-driven applications with our simple ORM "))
+  (style '(fg "ddd"))
   nl
 
   ;; Recent Comments section (uses raw SQL - see template for learning example)
