@@ -1,10 +1,36 @@
 # Claude Onboarding Guide - Nomadnet ORM
 
+## Code Style
+
+Always remember to KISS. We write code to be read, understood, and modified-- not to impress others. Don't prematurely optimize. Don't bother worrying about DRY until you actually start repeating yourself.
+
+Before worrying about extensibility, ask yourself-- "am I gonna need it"? If it is not in scope, it's better to have a clean interface that lends itself to refactoring in the future, than a messy interface with the *potential* of supporting non-existent features.
+
+Comments are good, but good variable names and simple patterns are also good. Save comments for things that might be confusing to a reader (macros, mathematical formulas, obscure language features that must be used)
+
+Rely on tests! TDD is an easy way to validate. Think about what logic can be tested easily, and try to separate it out from the things that are harder to test (I/O, networking, shared mutable state). *DONT* do so much TDD that you end up developing "enterprise-y" code. Just enough to be confident in the correctness of your code.
+
+Prefer an imperative style over OOP, and a functional style over imperative. Our could should be easy to read in a linear fashion. No jumping around between class methods and super classes. Prefer composition over inheritance, parsing over validation, explicit over implicit. Practice defensive programming. 
+
+Most of all, correct code should be beautiful code. Remember:
+
+> Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away
+
+## Documentation Style
+
+Offer just enough to get the user up and running with an example. Let them figure out the code by modifying examples. The example code should be the tutorial.
+
+*DONT* use modern-day marketing language. "Blazingly fast" in italics, etc. We are making practical tools for practical people, to help them solve real-world problems. Don't talk like a suit, or a robot, talk like a human. Remember the whole point of technology is to benefit humans. I want us to have learn, have fun, and build cool things to share with others. Not convince a VC firm to give us more money than God.
+
+## Self-Improvement
+
+You will use tools and reference documentation frequently. If you notice you are using a command or resource frequently, cache the important parts in the `CLAUDE.md` file. 
+
+If you are unsure about something, ask! I don't expect you to know the file structure of my entire machine-- or the contents of my brain for that matter. If you're unsure about paths, or house style, or formatting, just ask what my intent is-- or tell me what you think and give me a few options to choose from.
+
 ## What This Is
 
 A **simple, learnable ORM** for building Nomadnet applications in **Chicken Scheme**. Nomadnet is a mesh communication platform; it uses **micron** (a terminal-friendly markup language) to render pages.
-
-**Philosophy**: Learning-focused. Keep it simple. Every feature should teach Scheme concepts.
 
 ## Project Status: Fully Functional
 
@@ -15,31 +41,6 @@ A **simple, learnable ORM** for building Nomadnet applications in **Chicken Sche
 - ✅ Working Nomadnet page example
 - ✅ **Complete micron-dsl** with full feature set (forms, colors, alignment, etc.)
 - ⚠️ No UPDATE/DELETE (intentionally simple - user doesn't need them)
-
-## Directory Structure
-
-```
-workspace/
-├── src/
-│   ├── orm.scm          # CLI: csi -s orm.scm --generate
-│   ├── orm-lib.scm      # Runtime library (load this in user code)
-│   ├── models.scm       # Model definitions (alist format)
-│   └── micron-dsl.scm   # DSL for generating micron markup
-│
-├── pages/               # Working Nomadnet page example
-│   ├── index.mu         # Main page (run from workspace root)
-│   └── app/
-│       ├── actions/handle_comment.scm
-│       └── templates/comments.scm
-│
-├── docs/                # Learning materials & runnable examples
-│   ├── README.md        # Complete learning guide
-│   ├── QUICK_START.md   # API reference
-│   └── *.scm           # Runnable examples
-│
-├── app.db              # SQLite database
-└── README.md           # User-facing intro
-```
 
 ## Critical Path Knowledge
 
