@@ -28,6 +28,21 @@
 (define generate? (member "--generate" args))
 (define help? (member "--help" args))
 
+;;; Helper to get argument value after a flag
+;;; Example: For args like ["--generate" "--db-path" "/path/to/db.db"]
+;;; (get-arg-value "--db-path") returns "/path/to/db.db"
+(define (get-arg-value flag)
+  (let ((flag-pos (member flag args)))
+    (if (and flag-pos (not (null? (cdr flag-pos))))
+        (cadr flag-pos)
+        #f)))
+
+;; Get database path from arguments or use default
+(define db-path (or (get-arg-value "--db-path") "app/app.db"))
+
+;; Get models path from arguments or use default
+(define models-path (or (get-arg-value "--models-path") "app/models.scm"))
+
 ;; ========== WORKING WITH ALISTS ==========
 
 ;;; alist-ref is a built-in function that looks up a key in an association list
@@ -144,8 +159,8 @@
 
   ;; Load the models file
   ;; 'load' executes a Scheme file and makes its definitions available
-  (print "Loading models from models.scm...")
-  (load "app/models.scm")
+  (print "Loading models from " models-path "...")
+  (load models-path)
 
   ;; Now 'all-models' is available from models.scm
   (print "Found " (length all-models) " models")
@@ -183,8 +198,13 @@
   (print "ORM - Simple Object-Relational Mapper for Nomadnet")
   (print "")
   (print "Usage:")
-  (print "  csi -s orm.scm --generate    Generate database tables from models.scm")
-  (print "  csi -s orm.scm --help        Show this help message")
+  (print "  csi -s manage.scm --generate [OPTIONS]")
+  (print "    Generate database tables from models")
+  (print "")
+  (print "Options:")
+  (print "  --db-path PATH       Absolute path to database file (default: app/app.db)")
+  (print "  --models-path PATH   Absolute path to models file (default: app/models.scm)")
+  (print "  --help               Show this help message")
   (print ""))
 
 ;; ========== MAIN LOGIC ==========
@@ -197,7 +217,7 @@
     (show-help))
 
   (generate?
-    (generate-tables "app/app.db"))
+    (generate-tables db-path))
 
   (else
     (print "Error: Unknown command")

@@ -8,8 +8,11 @@
 (import micron)
 (import orm)
 
-;; Initialize ORM with models
-(orm-init "app/models.scm")
+;; Note: This file expects settings.scm to be loaded by the calling script
+;; (which provides app-models-path parameter)
+
+;; Initialize ORM with models from configured path
+(orm-init (app-models-path))
 
 ;; ========== COMMENTS DISPLAY ==========
 

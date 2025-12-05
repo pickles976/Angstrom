@@ -5,11 +5,12 @@
 (import micron)
 (import markdown)
 
-(load "./app/templates/header.scm")
-(load "./app/templates/comments.scm")
+;; Load settings (running from pages/, so app/ is relative)
+(load "app/settings.scm")
+(load "app/templates/header.scm")
+(load "app/templates/comments.scm")
 
 ;; Configuration
-(define db-path "app/app.db")
 (define page-name "index")
 
 (define (my-input-field label fieldname size)
@@ -72,7 +73,7 @@
 
     (style '(align left fg "ddd"))
     nl
-    (display-comments db-path page-name)
+    (display-comments (app-db-path) page-name)
     nl
 
   nl

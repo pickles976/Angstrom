@@ -5,9 +5,10 @@
 (import srfi-19)
 (import (chicken process-context))
 (import (chicken string))
+(import orm)
 
-;; Path relative to workspace root
-(import orm-lib)
+;; Load settings (working directory is always pages/)
+(load "app/settings.scm")
 
 ;; Get form data from environment variables
 (define user-name (or (get-environment-variable "field_user_name") "Anonymous"))
@@ -23,6 +24,9 @@
 ;; Generate timestamp
 (define timestamp (date->string (current-date) "~Y-~m-~d ~H:~M"))
 
+;; Initialize ORM with models from configured path
+(orm-init (app-models-path))
+
 ;; Create comment instance
 (define new-comment
   (make-comment
@@ -32,11 +36,8 @@
       (timestamp . ,timestamp)
       (text . ,sanitized-text))))
 
-;; Database path - relative to workspace root
-(define db-path "app/app.db")
-
-;; Save to database
-(db-open db-path)
+;; Save to database using configured path
+(db-open (app-db-path))
 (db-save new-comment)
 (db-close)
 

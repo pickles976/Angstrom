@@ -58,19 +58,6 @@ Add a scheme lsp extension to vscode. Open the command palette and type `ext ins
 
 ### TODO
 
-- [x] see if claude can create a simple ORM
-    - [x] models.scm file
-    - [x] orm --generate (makes file and tables)
-    - [x] insert command
-    - [x] return a list (filter by specific keywords)
-- [x] create documentation
-- [x] claude file
-- [x] implement the rest of micron-dsl
-
-- [x] separate all the examples out into "docs" or "examples"
-- [x] load and convert markdown content into micron
-- [x] create an example of converting markdown into micron
-
 ```
 csc -s -J micron.scm
 csc -s -J markdown.scm
@@ -86,18 +73,17 @@ chicken-install
         - [x] remove relative imports
         - [x] refactor
         - [x] issues with newline
-        - [ ] project_settings file
-        - [ ] make the database location configurable in settings
+        - [x] project_settings file
+        - [x] make the database location configurable in settings
+        - [x] user needs to point to models file when generating orm
 
+        - [ ] instead of comment template on the main page, show how to write a custom query that lists the most recent 10 comments without using an orm
         - [ ] blog post 0 (explain the basics of chicken scheme)
         - [ ] blog post 1 (explain how the DSL works)
         - [ ] blog post 2 (explain the markdown converter)
         - [ ] blog post 3 (explain how the ORM works)
-    - [ ] orm.scm
-        - [ ] add comment sections to the bottom of each page
-- [ ] get it working in-situ
 
-- [ ] index.md
+- [ ] get it working in-situ
 
 - [ ] deploy
 
@@ -105,16 +91,14 @@ chicken-install
     - [ ] organize by location
     - [ ] make sure that they all work
 
-DONE
+- [ ] fix markdown docs
+- [ ] improve styles
+- [ ] tar.gz
+- [ ] deploy and link people on github
+
+### Making my own fucking nodes finally
 
 - [ ] get lsp working
-- [ ] compile the custom modules
-
-- [ ] add instructions for users to build and use the custom modules
-- [ ] add some tutorials
-
-https://wiki.call-cc.org/chicken-for-python-programmers
-
 - [ ] integrate recipe search
     - [ ] run hari.recipes locally
     - [ ] query the API and html
@@ -122,4 +106,4 @@ https://wiki.call-cc.org/chicken-for-python-programmers
     - [ ] click on list entry and load HTML
     - [ ] convert HTML to micron
 - [ ] create epub search
-- [ ] update with learning
+- [ ] update with learnings
