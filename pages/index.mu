@@ -26,7 +26,7 @@
 ;; Load settings (running from pages/, so app/ is relative)
 (load "/home/sebas/.nomadnetwork/storage/pages/app/settings.scm")
 (load "/home/sebas/.nomadnetwork/storage/pages/app/templates/header.scm")
-(load "/home/sebas/.nomadnetwork/storage/pages/app/templates/recent-comments.scm")
+(load "./app/templates/recent-comments.scm")
 
 ;; Configuration
 (define page-name "index")

@@ -62,7 +62,7 @@
                    ;; Render the comment with micron markup
                    (conc
                      ;; Name and timestamp
-                     (style '(fg "eee")) name (reset-style)
+                     (style '(fg "aa2")) "▶" name (reset-style)
                      " (" timestamp ")"
 
                      ;; Optional LXMF address
@@ -78,7 +78,9 @@
                      ":" nl
 
                      ;; Comment text
-                     (style '(fg "ddd")) text (reset-style) nl
-                     "-" nl)))
+                     nl
+                     (style '(fg "eee" bg "222")) "    " text (reset-style) 
+                     nl
+                     nl)))
 
                rows)))))

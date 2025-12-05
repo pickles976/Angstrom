@@ -1,12 +1,10 @@
 ### TODO
 
-- [x] get sub-pages working
-- [x] fix markdown doc rendering
-- [ ] improve styles (purple)
+- [x] improve styles on comments
+- [ ] improve styles on sub-pages
 
 - [ ] tell user to use absolute paths
 
-- [ ] link people on github
 - [ ] create tar.gz 
 - [ ] deploy to nomadnet
 
