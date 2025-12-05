@@ -65,32 +65,14 @@ csc -s -J orm-lib.scm
 chicken-install
 ```
 
-- [ ] usage
-    - [ ] multiple pages generated with micron-dsl.scm 
-        - [x] index (link to repo)
-        - [x] test it
-        - [x] compile or use as script
-        - [x] remove relative imports
-        - [x] refactor
-        - [x] issues with newline
-        - [x] project_settings file
-        - [x] make the database location configurable in settings
-        - [x] user needs to point to models file when generating orm
-
-        - [x] instead of comment template on the main page, show how to write a custom query that lists the most recent 10 comments without using an orm
-        - [ ] blog post 0 (explain the basics of chicken scheme)
-        - [ ] blog post 1 (explain how the DSL works)
-        - [ ] blog post 2 (explain the markdown converter)
-        - [ ] blog post 3 (explain how the ORM works)
-
-- [ ] get it working in-situ
-
-- [ ] deploy
+- [ ] only works when launched from ./pages dir
 
 - [ ] update docs
+    - [ ] rewrite README.md
     - [ ] organize by location
     - [ ] make sure that they all work
 
+- [ ] get it working in-situ
 - [ ] fix markdown docs
 - [ ] improve styles
 - [ ] tar.gz

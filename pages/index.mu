@@ -4,6 +4,24 @@
 
 (import micron)
 (import markdown)
+(import (chicken process-context))
+(import (chicken file))
+(import (chicken port))
+
+;; ========== DEBUG INFO ==========
+;; Print debug information to stderr
+(with-output-to-port (current-error-port)
+  (lambda ()
+    (print "=== DEBUG INFO ===")
+    (print "Working Directory: " (current-directory))
+    (print "")
+    (print "Environment Variables:")
+    (for-each
+      (lambda (env-pair)
+        (print "  " (car env-pair) " = " (cdr env-pair)))
+      (get-environment-variables))
+    (print "==================")
+    (print "")))
 
 ;; Load settings (running from pages/, so app/ is relative)
 (load "app/settings.scm")
