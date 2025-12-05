@@ -18,10 +18,17 @@ Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DS
 
 3. **Build and install Angstrom modules**
    ```bash
-   cd ./framework
+   cd framework
 
-   # Build the modules
-    sudo csc -s micron.scm -J && sudo chicken-install
+   # Remove old versions (if updating)
+   sudo chicken-uninstall micron
+   sudo chicken-uninstall markdown
+   sudo chicken-uninstall orm
+
+   # Build and install all modules
+   sudo csc -s micron.scm -J && sudo chicken-install
+   sudo csc -s markdown.scm -J && sudo chicken-install
+   sudo csc -s orm-lib.scm -J && sudo chicken-install
    ```
 
 4. **Update Paths**
@@ -63,15 +70,101 @@ If you would like to implement new or complex functionality. I would recommend t
 
 ## Developer Experience
 
-If using vscode, download the Scheme extension and make sure that .mu files are recognized as scheme:
-`Preferences -> Settings -> type: "files.associations"` and add a mapping from `*.mu` to `scheme`.
+### VS Code Setup
 
-Install a scheme language server. 
-```bash
-sudo chicken-install -s apropos chicken-doc srfi-18
-cd `csi -R chicken.platform -p '(chicken-home)'`
-curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-sudo chicken-install lsp-server
-```
+1. **Install the Scheme LSP Extension**
+   ```bash
+   code --install-extension rgherdt.scheme-lsp
+   ```
 
-Add a scheme lsp extension to vscode. Open the command palette and type `ext install rgherdt.scheme-lsp`
+2. **Install the Chicken Scheme LSP Server**
+   ```bash
+   sudo chicken-install lsp-server
+   ```
+
+   This will install the `chicken-lsp-server` binary that provides:
+   - Auto-completion
+   - Go to definition (F12)
+   - Hover documentation
+   - Signature help
+
+3. **Configure Your Workspace**
+
+   Create `.vscode/settings.json` in your project root:
+   ```json
+   {
+     "scheme-lsp.schemeLspImplementation": "chicken",
+     "files.associations": {
+       "*.scm": "scheme",
+       "*.sld": "scheme",
+       "*.mu": "scheme"
+     },
+     "editor.formatOnSave": false,
+     "editor.quickSuggestions": {
+       "other": true,
+       "comments": false,
+       "strings": false
+     }
+   }
+   ```
+
+4. **Optional: Install chicken-doc for Better Completions**
+   ```bash
+   sudo chicken-install -s apropos chicken-doc srfi-18
+   cd `csi -R chicken.platform -p '(chicken-home)'`
+   curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+   ```
+
+5. **Reload VS Code**
+   - Press `Ctrl+Shift+P` and type "Reload Window"
+   - Or restart VS Code
+
+The LSP should now activate when you open any `.scm`, `.sld`, or `.mu` file.
+
+### Helix Setup
+
+1. **Install the Chicken Scheme LSP Server**
+   ```bash
+   sudo chicken-install lsp-server
+   ```
+
+   This installs the `chicken-lsp-server` binary system-wide.
+
+2. **Configure Helix**
+
+   Create or edit `~/.config/helix/languages.toml`:
+   ```toml
+   [[language]]
+   name = "scheme"
+   language-servers = ["chicken-lsp"]
+   file-types = ["scm", "sld", "mu"]
+
+   [language-server.chicken-lsp]
+   command = "chicken-lsp-server"
+   args = ["--stdio"]
+   ```
+
+3. **Optional: Install chicken-doc for Better Completions**
+   ```bash
+   sudo chicken-install -s apropos chicken-doc srfi-18
+   cd `csi -R chicken.platform -p '(chicken-home)'`
+   curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+   ```
+
+   This provides documentation for Chicken Scheme's built-in functions.
+
+4. **Verify Configuration**
+   ```bash
+   hx --health scheme
+   ```
+
+   You should see a green checkmark next to "chicken-lsp" in the configured language servers.
+
+5. **LSP Features in Helix**
+   - **Auto-completion**: Press `Ctrl+x` (or it appears automatically)
+   - **Go to definition**: Press `gd`
+   - **Hover documentation**: Press `K` (shift+k)
+   - **Rename symbol**: Press `Space+r`
+   - **Show references**: Press `Space+a`
+
+The LSP will activate automatically when you open any `.scm`, `.sld`, or `.mu` file in Helix.

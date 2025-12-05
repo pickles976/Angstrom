@@ -1,14 +1,13 @@
 ### TODO
 
 - [x] improve styles on comments
+- [ ] set up git project in `./storage/`` so we have live edits 
 - [ ] improve styles on sub-pages
 
 - [ ] create tar.gz 
 - [ ] deploy to nomadnet
 
 ### Making my own fucking nodes finally
-
-- [ ] get lsp working
 
 - [ ] create an an epub listing demo
 

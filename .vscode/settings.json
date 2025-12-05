@@ -1,0 +1,17 @@
+{
+  "scheme-lsp.schemeLspImplementation": "chicken",
+  "scheme-lsp.schemeLspServerPath": "/home/sebas/.cache/chicken-install/lsp-server/chicken-lsp-server",
+  "scheme-lsp.chickenSourcePath": "",
+  "files.associations": {
+    "*.scm": "scheme",
+    "*.sld": "scheme",
+    "*.mu": "scheme"
+  },
+  "editor.formatOnSave": false,
+  "editor.suggestSelection": "first",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  }
+}
