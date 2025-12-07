@@ -8,11 +8,11 @@
 
 ;; Absolute path to your SQLite database file
 ;; Example: "/home/user/NomadnetTemplates/pages/app/app.db"
-(define db-path "/home/pi/.nomadnetwork/storage/pages/app/app.db")
+(define db-path "/home/sebas/Projects/NomadnetTemplates/pages/app/app.db")
 
 ;; Absolute path to your models file
 ;; Example: "/home/user/NomadnetTemplates/pages/app/models.scm"
-(define models-path "/home/pi/.nomadnetwork/storage/pages/app/models.scm")
+(define models-path "/home/sebas/Projects/NomadnetTemplates/pages/app/models.scm")
 
 ;; ========== EXPORTS ==========
 

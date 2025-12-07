@@ -3,9 +3,9 @@
 ;;; micron-dsl.mu - Micron DSL Reference
 
 (import micron)
-(load "/home/pi/.nomadnetwork/storage/pages/app/settings.scm")
-(load "/home/pi/.nomadnetwork/storage/pages/app/templates/comments.scm")
-(load "/home/pi/.nomadnetwork/storage/pages/app/templates/code.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/settings.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/templates/comments.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/templates/code.scm")
 (define page-name "micron-dsl")
 
 (print

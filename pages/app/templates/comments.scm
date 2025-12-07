@@ -11,7 +11,7 @@
 
 ;; Note: This file expects settings.scm to be loaded by the calling script
 ;; (which provides app-models-path parameter)
-(load "/home/pi/.nomadnetwork/storage/pages/app/settings.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/settings.scm")
 
 ;; Initialize ORM with models from configured path
 (orm-init (app-models-path))

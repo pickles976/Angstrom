@@ -23,10 +23,10 @@
 ;     (print "")))
 
 ;; Load settings (running from pages/, so app/ is relative)
-(load "/home/pi/.nomadnetwork/storage/pages/app/settings.scm")
-(load "/home/pi/.nomadnetwork/storage/pages/app/templates/header.scm")
-(load "/home/pi/.nomadnetwork/storage/pages/app/templates/comments.scm")
-(load "/home/pi/.nomadnetwork/storage/pages/app/templates/code.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/settings.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/templates/header.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/templates/comments.scm")
+(load "/home/sebas/Projects/NomadnetTemplates/pages/app/templates/code.scm")
 
 ;; Configuration
 (define page-name "index")
@@ -64,6 +64,19 @@
     (style '(fg "ddd"))
     nl
 
+  (style '(align left))
+  nl
+  (section "Demos")
+
+  nl
+  (style '(fg "5af"))
+  (bold (file-link "/page/subpages/file-browser.mu" "File Browser"))
+  nl nl
+
+  (style '(fg "5af"))
+  (bold (file-link "/page/subpages/recipe-search.mu" "Recipe Search"))
+  nl nl
+
   ;; Installation instructions
   (style '(align left))
   nl
@@ -87,7 +100,7 @@
   (subsection "Install required Chicken Scheme packages")
   nl
   (code-block
-  (code "sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19") nl nl)
+  (code "sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19 fmt") nl nl)
 
   (subsection "Build and install Angstrom modules")
   nl
