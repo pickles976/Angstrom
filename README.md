@@ -12,6 +12,7 @@ Tools for building Nomadnet apps in Chicken Scheme. Includes an ORM, a micron DS
 
 2. **Install Chicken Scheme and dependencies**
    ```bash
+   sudo apt install libssl-dev
    sudo apt-get install chicken-bin
    sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19 fmt http-client openssl
    ```

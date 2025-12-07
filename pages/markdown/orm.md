@@ -1,109 +1,137 @@
-# ORM Guide
+# ORM Guide  
 
-## What is the ORM?
+## What is the ORM?  
 
 A simple Object-Relational Mapper for building data-driven Nomadnet apps.
 Automatically generates database tables and provides easy CRUD operations.
 
-## Defining Models
+## Defining Models  
 
 Models are defined as alists in `app/models.scm`:
 
-```
+```  
+
 (define comment-model
   '((name . comment)
     (fields . (
       ((name . id) (type . integer) (primary-key . #t))
-      ((name . text) (type . text))))))
-```
+      ((name . text) (type . text))))))  
 
-## Generating Tables
+```  
+
+## Generating Tables  
 
 Create database tables from your models:
 
-```
+```  
+
 csi -s framework/manage.scm --generate \
   --db-path /absolute/path/to/app.db \
-  --models-path /absolute/path/to/models.scm
-```
+  --models-path /absolute/path/to/models.scm  
 
-## Using the ORM
+```  
 
-**Initialize:**
-```
+## Using the ORM  
+
+**Initialize:**  
+
+```  
+
 (import orm)
 (load "app/settings.scm")
-(orm-init (app-models-path))
-```
+(orm-init (app-models-path))  
 
-**Open/Close Database:**
-```
+```  
+
+**Open/Close Database:**  
+
+```  
+
 (db-open (app-db-path))
-(db-close)
-```
+(db-close)  
 
-**Create (INSERT):**
-```
+```  
+
+**Create (INSERT):**  
+
+```  
+
 (define comment (make-comment '((text . "Hello"))))
-(db-save comment)
-```
+(db-save comment)  
 
-**Read (SELECT):**
-```
+```  
+
+**Read (SELECT):**  
+
+```  
+
 (db-list 'comment)  ; Get all comments
-(db-list 'comment '((page-name . "index")))  ; Filter
-```
+(db-list 'comment '((page-name . "index")))  ; Filter  
 
-## Working with Instances
+```  
 
-Instances are alists with a `__model__` key:
+## Working with Instances  
 
-```
+Instances are alists with a `__model__` key:  
+
+```  
+
 (define comment (make-comment '((name . "Alice"))))
-(alist-ref 'name comment)  ; Get field value
-```
+(alist-ref 'name comment)  ; Get field value  
 
-## Raw SQL
+```  
 
-For complex queries, use `sql-de-lite` directly:
+## Raw SQL  
 
-```
+For complex queries, use `sql-de-lite` directly:  
+
+```  
+
 (let* ((db (open-database path))
        (stmt (sql db "SELECT * FROM comment LIMIT ?"))
        (rows (query fetch-all stmt 10)))
   (close-database db)
-  rows)
-```
+  rows)  
+
+```  
 
 See `app/templates/recent-comments.scm` for a complete example.
 
-## Key Concepts
+## Key Concepts  
 
-**Alists:** Association lists for data
-```
-'((name . "Alice") (age . 30))
-```
+**Alists:** Association lists for data  
+```  
 
-**Parameters:** Thread-safe configuration
-```
-(app-db-path) - Get configured database path
-```
+'((name . "Alice") (age . 30))  
 
-**Auto Constructors:** Generated from models
-```
-(make-comment fields) - Created automatically
-```
+```  
 
-## Limitations
+**Parameters:** Thread-safe configuration  
+
+```  
+
+(app-db-path) - Get configured database path  
+
+```  
+
+**Auto Constructors:** Generated from models  
+
+```  
+
+(make-comment fields) - Created automatically  
+
+```  
+
+## Limitations  
 
 The ORM is intentionally simple:
 * No UPDATE or DELETE
 * No JOINs
 * Only equality filters (no <, >, LIKE)
-* AND filters only (no OR)
+* AND filters only (no OR)  
 
-Use raw SQL for complex operations.
+Use raw SQL for complex operations.  
 
-## Learn More
+## Learn More  
 
-See `framework/orm-lib.scm` for the full implementation.
+See `framework/orm-lib.scm` for the full implementation.  
