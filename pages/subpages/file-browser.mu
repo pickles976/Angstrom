@@ -13,7 +13,7 @@
 
 (define current-dir (or (get-environment-variable "field_current_dir") "/home/sebas/.nomadnetwork/storage/files"))
 
-;; Get list of files and directories
+;; Get list of files and directories, sorted alphabetically
 (define entries (directory current-dir #t))
 
 (define (get-file-size filepath)

@@ -100,7 +100,7 @@
   (subsection "Install required Chicken Scheme packages")
   nl
   (code-block
-  (code "sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19 fmt") nl nl)
+  (code "sudo chicken-install sql-de-lite srfi-1 srfi-13 srfi-19 fmt http-client") nl nl)
 
   (subsection "Build and install Angstrom modules")
   nl
